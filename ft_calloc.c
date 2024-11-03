@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:53:50 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/01 16:55:11 by yoelali          ###   ########.fr       */
+/*   Updated: 2024/11/02 15:19:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*sp;
 
 	sp = malloc(count * size);
-	if (sp)
+	if (!sp)
 		return (NULL);
 	ft_bzero(sp, count * size);
 	return (sp);

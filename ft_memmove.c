@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:58:16 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/01 17:06:04 by yoelali          ###   ########.fr       */
+/*   Updated: 2024/11/02 15:28:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else
 	{
-		while (len)
+		while (len > 0)
 		{
-			d[len] = s[len];
+			d[len - 1] = s[len - 1];
 			len--;
 		}
 	}

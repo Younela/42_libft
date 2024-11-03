@@ -3,25 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 14:50:32 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/01 17:08:52 by yoelali          ###   ########.fr       */
+/*   Updated: 2024/11/02 15:24:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
-	char	s;
+#include "libft.h"
 
-	s = (char)c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			return ((char *)s + i);
+char *ft_strchr(const char *s, int c) {
+	int i = 0;
+	
+	// Loop through the string until we find the null terminator
+	while (s[i] != '\0') {
+		if (s[i] == (char)c) {
+			return (char *)(s + i); // Return pointer to the found character
+		}
 		i++;
 	}
-	return ((char *)s);
+	// Check if the character is the null terminator
+	if (s[i] == (char)c) {
+		return (char *)(s + i); // Return pointer to the null terminator if found
+	}
+	return (NULL); // Return NULL if the character is not found
 }

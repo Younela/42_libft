@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
-#@echo "Creating archive: $(NAME)"
+	@echo "Creating archive: $(NAME)"
 
 %.o: %.c $(HEADER)
 	$(CC) -c $(FLAGS) $< -o $@

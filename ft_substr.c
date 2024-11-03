@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:00:29 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/01 17:41:46 by yoelali          ###   ########.fr       */
+/*   Updated: 2024/11/02 15:32:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		ptr[i] = (char *)s[i + (size_t)start];
 		i++;
 	}
+	return (ptr);
 }

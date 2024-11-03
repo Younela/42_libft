@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:09:29 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/02 13:09:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/02 15:33:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	i = 0;
 	result = 0;
-	while ((str[i] == '\t' || str[i] == ' ') && str[i])
+	//ft_isspace
+	while (((str[i] >= 9 && str[i] <= 13) || str[i] == ' ') && str[i])
 	{
 		i++;
 	}
@@ -36,5 +37,5 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] - 48;
 		i++;
 	}
-return (result * sign);
+	return (result * sign);
 }
