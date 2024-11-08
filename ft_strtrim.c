@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 15:40:28 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/07 16:34:25 by yoelali          ###   ########.fr       */
+/*   Created: 2024/11/04 11:49:58 by yoelali           #+#    #+#             */
+/*   Updated: 2024/11/04 13:42:51 by yoelali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	size_t	j;
-	char	*src;
+	size_t	star;
+	size_t	len;
 	char	*str;
 
-	src = (char *)haystack;
-	str = (char *)needle;
+	if (!s1 || !set)
+		return (NULL);
+	i = ft_strlen(s1);
+	star = 0;
+	while (s1[star] && ft_strchr(set, s1[star]))
+		star++;
+	if (star == i)
+		return (ft_strdup(""));
+	while (s1[i] && ft_strrchr(set, (int)s1[i]))
+		i--;
+	len = i - star;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	if (!*str)
-		return ((char *)haystack);
-	if (len == 0)
-		return (0);
-	while (src[i] && i < len)
-	{
-		j = 0;
-		while (src[i + j] == str[j] && (i + j) < len)
-		{
-			if (str[j + 1] == '\0')
-				return ((char *)haystack + i);
-			j++;
-		}
-		i++;
-	}
-	return (NULL);
+	while (i < len)
+		str[i++] = s1[star++];
+	str[i] = '\0';
+	return (str);
 }

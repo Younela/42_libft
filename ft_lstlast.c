@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 15:29:10 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/07 16:32:03 by yoelali          ###   ########.fr       */
+/*   Created: 2024/11/07 14:32:07 by yoelali           #+#    #+#             */
+/*   Updated: 2024/11/07 15:48:27 by yoelali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t			i;
-	unsigned char	*s;
-	unsigned char	*s0;
-
-	s = (unsigned char *)s1;
-	s0 = (unsigned char *)s2;
-	i = 0;
-	while ((s1[i] || s0[i]) && i < n)
-	{
-		if (s[i] != s0[i])
-			return (s[i] - s0[i]);
-		i++;
-	}
-	return (0);
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

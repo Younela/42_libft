@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoelali <yoelali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 15:40:28 by yoelali           #+#    #+#             */
-/*   Updated: 2024/11/07 16:34:25 by yoelali          ###   ########.fr       */
+/*   Created: 2024/11/07 16:17:18 by yoelali           #+#    #+#             */
+/*   Updated: 2024/11/07 16:44:35 by yoelali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
-	char	*src;
-	char	*str;
+	t_list	*ptr;
+	t_list	*new;
 
-	src = (char *)haystack;
-	str = (char *)needle;
-	i = 0;
-	if (!*str)
-		return ((char *)haystack);
-	if (len == 0)
-		return (0);
-	while (src[i] && i < len)
+	ptr = NULL;
+	new = NULL;
+	if (!lst || !f)
+		return (NULL);
+	while (lst)
 	{
-		j = 0;
-		while (src[i + j] == str[j] && (i + j) < len)
+		new = ft_lstnew(f(lst->content));
+		if (!new)
 		{
-			if (str[j + 1] == '\0')
-				return ((char *)haystack + i);
-			j++;
+			ft_lstclear(&ptr, del);
+			return (NULL);
 		}
-		i++;
+		ft_lstadd_back(&ptr, new);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (ptr);
 }
